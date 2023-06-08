@@ -1,20 +1,21 @@
 import style from './createPage.module.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export const CreatePage = () => {
+  const navigate = useNavigate()
   return (
     <div className={style.container}>
       <div className={style.status_bar}>
-        <div className={style.status_circle_active}>
+        <div className={style.status_circle_active} onClick={() => navigate('/create')}>
           <div className={style.mini_circle}></div>
           <p className={style.first}>1</p>
         </div>
         <div className={style.status_line}/>
-        <div className={style.status_circle}>
+        <div className={style.status_circle} onClick={() => navigate('/second-create')}>
           <p className={style.unactive_numbers}>2</p>
         </div>
         <div className={style.status_line}/>
-        <div className={style.status_circle}>
+        <div className={style.status_circle} onClick={() => navigate('/final-create')}>
           <p className={style.unactive_numbers}>3</p>
         </div>
       </div>
@@ -32,7 +33,7 @@ export const CreatePage = () => {
           </div>
         </div>
         <div className={style.input_block}>
-          <label className={style.input_label}>Sername</label>
+          <label className={style.input_label}>Surname</label>
           <div>
             <input className={style.form_input} placeholder='Placeholder' type="text"/>
           </div>
@@ -48,10 +49,9 @@ export const CreatePage = () => {
           </div>
         </div>
         <div className={style.button_footer}>
-          <button className={style.previous_button}><Link to='/'>Назад</Link></button>
-          <button className={style.next_button}><Link to='/second-create'>Далее</Link></button>
+          <Link to='/'><button className={style.previous_button}>Назад</button></Link>
+          <Link to='/second-create'><button className={style.next_button}>Далее</button></Link>
         </div>
-
       </div>
     </div>
 

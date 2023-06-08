@@ -36,9 +36,11 @@ export const MainPage = () => {
               <input className={style.form_input} placeholder='tim.jennings@example.com' type="email"/>
             </div>
           </div>
+        <Link to='/create'>
           <div>
-            <button className={style.form_button}><Link to='/create'>Начать</Link></button>
+            <button className={style.form_button}>Начать</button>
           </div>
+        </Link>
       </main>
     </div>
   )

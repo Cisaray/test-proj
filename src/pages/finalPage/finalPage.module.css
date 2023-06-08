@@ -150,3 +150,16 @@
 .next_button:hover {
     background-color: #0f1196;
 }
+
+.about_block {
+    margin-top: 100px;
+}
+.about_area {
+    margin-top: 8px;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100px;
+    height: 0;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    padding: 8px;
+}

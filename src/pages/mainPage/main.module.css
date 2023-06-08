@@ -5,6 +5,16 @@
     margin: 24px auto;
     background-color: white;
     border-radius: 10px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 901px) {
+    .container {
+        max-width: 600px;
+        height: 504px;
+        margin: 12px auto;
+    }
+
 }
 
 .header {
@@ -68,6 +78,25 @@
 }
 
 .form_button:hover {
-    color:#5558FA;
+    color: #5558FA;
     background-color: white;
+}
+
+@media screen and (max-width: 621px) {
+    .container {
+        max-width: 500px;
+        height: 504px;
+        margin: 12px auto;
+    }
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .form_button {
+        margin-top: 24px;
+    }
+    .input_email_block {
+        margin-top: 12px;
+    }
+
 }
