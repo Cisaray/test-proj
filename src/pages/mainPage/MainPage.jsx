@@ -1,5 +1,5 @@
 import style from './main.module.css'
-import { useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import React from "react";
 import InputMask from 'react-input-mask'
@@ -44,7 +44,6 @@ export const MainPage = () => {
     dispatch(setPhoneNumber(data.phone_number))
     navigate('/create')
     console.log(data)
-
   }
 
   return (
@@ -119,9 +118,7 @@ export const MainPage = () => {
             {errors.email && <p className={style.phone_error}>{errors.email.message}</p>}
           </div>
         </div>
-
-          <button type='submit' className={style.form_button}>Начать</button>
-
+        <button type='submit' className={style.form_button}>Начать</button>
       </form>
     </div>
   )
