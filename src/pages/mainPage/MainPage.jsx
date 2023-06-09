@@ -57,15 +57,15 @@ export const MainPage = () => {
           <div className={style.links}>
             <div className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <span className={style.link_style} href="#">Telegram</span>
+              <span className={style.link_style}>Telegram</span>
             </div>
             <div className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <span className={style.link_style} href="#">GitHub</span>
+              <span className={style.link_style}>GitHub</span>
             </div>
             <div className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <span className={style.link_style} href="#">Resume</span>
+              <span className={style.link_style}>Resume</span>
             </div>
           </div>
         </div>

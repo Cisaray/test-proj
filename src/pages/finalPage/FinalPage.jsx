@@ -21,18 +21,18 @@ export const FinalPage = ({
   return (
     <div className={style.container}>
       <div className={style.status_bar}>
-        <div className={style.status_circle_active} onClick={() => setPage(1)}>
+        <div className={style.status_circle_active}>
           <div className={style.mini_circle}></div>
           <p className={style.first}>1</p>
         </div>
 
         <div className={style.status_line_active}/>
-        <div className={style.status_circle_active} onClick={() => setPage(2)}>
+        <div className={style.status_circle_active}>
           <div className={style.mini_circle}></div>
           <p className={style.first}>2</p>
         </div>
         <div className={style.status_line_active}/>
-        <div className={style.status_circle_active} onClick={() => setPage(3)}>
+        <div className={style.status_circle_active}>
           <div className={style.mini_circle}></div>
           <p className={style.first}>3</p>
         </div>
