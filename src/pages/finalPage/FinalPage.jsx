@@ -58,7 +58,6 @@ export const FinalPage = ({
       <div className={style.button_footer}>
         <button onClick={() => setPage(2)} className={style.previous_button}>Назад</button>
         <button type='submit' onClick={handleSubmit(onSubmit)} className={style.next_button}>Отправить</button>
-        {/*<button type='button' onClick={() => setShowFail(true)} className={style.next_button}>fail</button>*/}
       </div>
       <SuccessModal showSuccess={showSuccess} setShowSuccess={setShowSuccess}/>
       <FailModal showFail={showFail} setShowFail={setShowFail}/>

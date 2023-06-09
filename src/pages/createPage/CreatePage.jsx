@@ -1,8 +1,5 @@
 import style from './createPage.module.css'
-import {Link, useNavigate} from "react-router-dom";
-import {useForm} from "react-hook-form";
-import {useDispatch, useSelector} from "react-redux";
-import {setName, setNickName, setSex, setSurname} from "../../redux/slices/formSlice";
+import {Link} from "react-router-dom";
 
 export const CreatePage = ({register, handleSubmit, errors, setPage}) => {
   const onSubmit = () => {
@@ -12,16 +9,16 @@ export const CreatePage = ({register, handleSubmit, errors, setPage}) => {
   return (
     <div className={style.container}>
       <div className={style.status_bar}>
-        <div className={style.status_circle_active} onClick={() => setPage(1)}>
+        <div className={style.status_circle_active}>
           <div className={style.mini_circle}></div>
           <p className={style.first}>1</p>
         </div>
         <div className={style.status_line}/>
-        <div className={style.status_circle} onClick={() => setPage(2)}>
+        <div className={style.status_circle}>
           <p className={style.unactive_numbers}>2</p>
         </div>
         <div className={style.status_line}/>
-        <div className={style.status_circle} onClick={() => setPage(3)}>
+        <div className={style.status_circle}>
           <p className={style.unactive_numbers}>3</p>
         </div>
       </div>

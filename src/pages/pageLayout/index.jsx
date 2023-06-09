@@ -18,7 +18,7 @@ export const PageLayout = () => {
       advantages: [{value: ''}, {value: ''}, {value: ''}],
     }
   })
-  const [fetchData, {error}] = usePostDataMutation()
+  const [fetchData] = usePostDataMutation()
   const onSubmit = async (data, e) => {
     e.stopPropagation()
     try {

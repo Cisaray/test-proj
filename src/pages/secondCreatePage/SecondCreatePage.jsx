@@ -8,7 +8,6 @@ export const SecondCreatePage = ({setPage, register, handleSubmit, errors, contr
     control,
     name: 'advantages'
   })
-
   const onSubmit = (data) => {
     setPage(3)
   }
