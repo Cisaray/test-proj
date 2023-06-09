@@ -3,13 +3,23 @@ import style from "./finalPage.module.css";
 import {Link, useNavigate} from "react-router-dom";
 import {SuccessModal} from "../../components/modals/successModal/SuccessModal";
 import {FailModal} from "../../components/modals/failModal/FailModal";
+import {useForm} from "react-hook-form";
 
 export const FinalPage = () => {
   const [showSuccess, setShowSuccess] = React.useState(false)
   const [showFail, setShowFail] = React.useState(false)
+  const[aboutValue, setAboutValue]=React.useState('')
   const navigate = useNavigate()
+  const {register, handleSubmit, formState:{errors}, watch} = useForm()
+
+  const onSubmit = (data, e) => {
+    e.stopPropagation()
+    console.log(data)
+  }
+
+
   return (
-    <main className={style.container}>
+    <form onSubmit={handleSubmit(onSubmit)} className={style.container}>
       <div className={style.status_bar}>
         <div className={style.status_circle_active} onClick={() => navigate('/create')}>
           <div className={style.mini_circle}></div>
@@ -29,15 +39,29 @@ export const FinalPage = () => {
       </div>
       <div className={style.about_block}>
         <label>About</label>
-        <textarea className={style.about_area} name="about" cols="30" rows="10"></textarea>
+        <textarea
+          className={style.about_area}
+          {...register('about',
+            {
+              required: 'Заполните это поле',
+              maxLength:200
+            })}
+          onChange={(e)=>setAboutValue(e.target.value)}
+          defaultValue={aboutValue}
+          name="about"
+          cols="30"
+          rows="10">
+        </textarea>
+        <span className={style.count}>{aboutValue.replaceAll(" ",'').length}</span>
       </div>
+      {errors.about && <p className={style.errors}>{errors.about.message}</p>}
       <div className={style.button_footer}>
         <Link to='/second-create'> <button className={style.previous_button}>Назад</button></Link>
-        <Link to='/final-create'><button onClick={() => setShowSuccess(true)} className={style.next_button}>Отправить</button></Link>
-        <Link to='/final-create'><button onClick={() => setShowFail(true)} className={style.next_button}>fail</button></Link>
+        <button type='submit' onClick={() => setShowSuccess(true)} className={style.next_button}>Отправить</button>
+        <button type='button' onClick={() => setShowFail(true)} className={style.next_button}>fail</button>
       </div>
       <SuccessModal showSuccess={showSuccess} setShowSuccess={setShowSuccess}/>
       <FailModal showFail={showFail} setShowFail={setShowFail}/>
-    </main>
+    </form>
   )
 }

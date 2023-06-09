@@ -150,3 +150,7 @@
 .next_button:hover {
     background-color: #0f1196;
 }
+.errors {
+    color: red;
+}
+

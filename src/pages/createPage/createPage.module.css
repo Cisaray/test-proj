@@ -123,6 +123,10 @@
 .next_button:hover {
     background-color: #0f1196;
 }
+.errors {
+    color: red;
+}
+
 @media screen and (max-width: 601px){
     .input_block {
         margin-top: 24px;

@@ -15,7 +15,9 @@ export const MainPage = () => {
     register,
     handleSubmit,
     formState: {errors},
-  } = useForm()
+  } = useForm({
+    mode: "onBlur"
+  })
   const formatPhoneNumber = (value) => {
     const phoneNumber = value.replace(/\D/g, ''); // Удаление всех символов, кроме цифр
 
@@ -31,7 +33,7 @@ export const MainPage = () => {
   };
 
   const handleKeyDown = (e) => {
-    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+']
+    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
     if (!numbers.includes((e.key))) {
       e.preventDefault()

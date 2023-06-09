@@ -3,9 +3,13 @@ import {createSlice} from "@reduxjs/toolkit";
 const initialState ={
   email: '',
   phone_number: '',
-  firstPage:{},
-  secondPage:{},
-  finalPage:{}
+  nickname: '',
+  name: '',
+  surname: '',
+  sex: '',
+  advantages: [],
+  checkboxes: [],
+  number: '',
 }
 
 const FormSlice = createSlice({
@@ -17,9 +21,30 @@ const FormSlice = createSlice({
     },
     setPhoneNumber(state, action) {
       state.phone_number=action.payload
+    },
+    setNickName(state, action) {
+      state.nickname = action.payload
+    },
+    setName(state, action) {
+      state.name = action.payload
+    },
+    setSurname(state, action) {
+      state.surname = action.payload
+    },
+    setSex(state, action) {
+      state.sex = action.payload
+    },
+    setAdvantages(state, action) {
+      state.advantages = action.payload
+    },
+    setCheckboxes(state, action) {
+      state.checkboxes = action.payload
+    },
+    setNumber(state, action) {
+      state.number = action.payload
     }
   }
 })
 
-export const {setPhoneNumber, setEmail} = FormSlice.actions
+export const {setPhoneNumber, setEmail, setNickName, setName, setSurname, setSex, setAdvantages, setCheckboxes,setNumber} = FormSlice.actions
 export default FormSlice.reducer

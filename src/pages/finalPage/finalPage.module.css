@@ -153,6 +153,7 @@
 
 .about_block {
     margin-top: 100px;
+    position: relative;
 }
 .about_area {
     margin-top: 8px;
@@ -162,4 +163,16 @@
     height: 0;
     border: 1px solid rgba(0, 0, 0, 0.16);
     padding: 8px;
+}
+.count {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+.errors {
+    color: red;
 }
