@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Тестовое задание для поступления в FrontCloudCamp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Разработка формы описания профиля
 
-## Available Scripts
+В рамках дизайна формы было реализовано 3 отдельных таба(шага) формы, которые можно переключать между собой. При переходе от таба к табу (в том числе возвращаясь на предыдущий) информация сохраняется.
 
-In the project directory, you can run:
+На первом экране необходимо добавить информацию о себе и по нажатию на кнопку будет происходить переход на форму. При переходе должен меняется роут.
 
-### `npm start`
+На каждом этапе формы провалидированы значения конкретного шага.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+После отправки формы показывается модальное окно с success или error.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Для отправки формы использовал api https://api.sbercloud.ru/content/v1/bootcamp/frontend
 
-### `npm test`
+Адаптивная версия также реализована
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Валидация и описание полей
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* nickname - строковое значение, максимальная длина 30 символов, могут быть просто буквы и цифры (спец символы запрещены)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* name - строковое значение, максимальная длина 50 символов, только буквы
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* sername - строковое значение, максимальная длина 50 символов, только буквы
 
-### `npm run eject`
+* phone - строковое значение, форма записи +7 (900) 000-00-00 - реализовать маску ввода, +7, (), -, уже подставленные символы, валидация - цифры
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* email - строковое значение, валидация на email стандартная @ и .домен
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* sex - enum 'man' | 'woman' реализовать как select
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* advantages - массив строк, основной критерий - массив строк. По нажатию на “Плюс” должно добавляться новое поле и так же валидироваться.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* radio - number блок, в дизайне должна быть группа элементов RadioGroup
 
-## Learn More
+* checkbox - массив number, в дизайне должна быть группа элементов CheckboxGroup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* about - textarea блок максимальная длина 200 символов, в правом нижнем углу добавить счётчик символов без пробелов
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Используемый стек:
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* React
+* Redux-Toolkit, RTK Query
+* css modules
+* react hook form
