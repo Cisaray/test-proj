@@ -6,6 +6,13 @@ import InputMask from 'react-input-mask'
 import {useDispatch, useSelector} from "react-redux";
 import {setEmail, setPhoneNumber} from "../../redux/slices/formSlice";
 
+const handleKeyDown = (e) => {
+  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  if (!numbers.includes((e.key))) {
+    e.preventDefault()
+  }
+}
+
 export const MainPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,35 +25,13 @@ export const MainPage = () => {
   } = useForm({
     mode: "onBlur"
   })
-  const formatPhoneNumber = (value) => {
-    const phoneNumber = value.replace(/\D/g, ''); // Удаление всех символов, кроме цифр
 
-    if (phoneNumber.length <= 3) {
-      return phoneNumber;
-    } else if (phoneNumber.length <= 6) {
-      return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4)}`;
-    } else if (phoneNumber.length <= 8) {
-      return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7)}`;
-    } else {
-      return `+7 (${phoneNumber.slice(1, 4)}) ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(9, 11)}`;
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-
-    if (!numbers.includes((e.key))) {
-      e.preventDefault()
-    }
-  }
-
-  const onSubmit = (data, e) => {
+  const onSubmit = React.useCallback((data, e) => {
     e.preventDefault()
     dispatch(setEmail(data.email))
     dispatch(setPhoneNumber(data.phone_number))
     navigate('/create')
-    console.log(data)
-  }
+  },[dispatch, navigate])
 
   return (
     <div className={style.container}>
@@ -88,12 +73,8 @@ export const MainPage = () => {
                   pattern: {
                     value: /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
                     message: 'Неверный формат номера телефона',
-
                   },
                 })}
-              onBlur={(e) => {
-                e.target.value = formatPhoneNumber(e.target.value)
-              }}
             />
             {errors.phone_number && <p className={style.phone_error}>{errors.phone_number.message}</p>}
 

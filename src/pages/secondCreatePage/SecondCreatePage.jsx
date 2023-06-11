@@ -8,9 +8,9 @@ export const SecondCreatePage = ({setPage, register, handleSubmit, errors, contr
     control,
     name: 'advantages'
   })
-  const onSubmit = (data) => {
+  const onSubmit = React.useCallback ((data) => {
     setPage(3)
-  }
+  },[setPage])
 
   return (
     <main className={style.container}>

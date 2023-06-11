@@ -17,7 +17,6 @@ export const FinalPage = ({
 
   const [aboutValue, setAboutValue] = React.useState('')
 
-
   return (
     <div className={style.container}>
       <div className={style.status_bar}>

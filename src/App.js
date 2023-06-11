@@ -7,7 +7,6 @@ function App() {
       <Route path='/' element={<MainPage/>}/>
       <Route path='/create' element={<PageLayout/>}/>
     </Routes>
-
   );
 }
 

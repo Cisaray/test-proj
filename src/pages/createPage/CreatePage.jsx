@@ -1,10 +1,11 @@
 import style from './createPage.module.css'
 import {Link} from "react-router-dom";
+import React from 'react'
 
 export const CreatePage = ({register, handleSubmit, errors, setPage}) => {
-  const onSubmit = () => {
+  const onSubmit = React.useCallback(() => {
     setPage(2)
-  }
+  },[setPage])
 
   return (
     <div className={style.container}>

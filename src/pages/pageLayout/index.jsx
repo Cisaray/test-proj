@@ -19,7 +19,8 @@ export const PageLayout = () => {
     }
   })
   const [fetchData] = usePostDataMutation()
-  const onSubmit = async (data, e) => {
+
+  const onSubmit = React.useCallback( async (data, e) => {
     e.stopPropagation()
     try {
       const advantages = data.advantages.map(item => item.value)
@@ -38,16 +39,17 @@ export const PageLayout = () => {
       }
 
       await fetchData(resultData)
+      console.log(resultData)
       setShowSuccess(true)
       dispatch(setPhoneNumber(''))
       dispatch(setEmail(''))
       reset()
     } catch (err) {
-      console.log(err)
       setShowFail(true)
     }
 
-  }
+  },[dispatch, setShowSuccess, setShowFail,reset,email, phone_number, fetchData])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {page === 1 && <CreatePage register={register} handleSubmit={handleSubmit} errors={errors} setPage={setPage}/>}
