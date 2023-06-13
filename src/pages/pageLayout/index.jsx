@@ -37,9 +37,7 @@ export const PageLayout = () => {
         number: data.number,
         about: data.about,
       }
-      console.log(resultData)
       await fetchData(resultData)
-      console.log(resultData)
       setShowSuccess(true)
       dispatch(setPhoneNumber(''))
       dispatch(setEmail(''))
