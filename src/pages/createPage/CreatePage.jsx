@@ -1,8 +1,12 @@
 import style from './createPage.module.css'
 import {Link} from "react-router-dom";
 import React from 'react'
+import {TextInput} from "../../components/Inputs/TextInput";
+import {SelectInput} from "../../components/Inputs/SelectInput";
+import {useFormContext} from "react-hook-form";
 
-export const CreatePage = ({register, handleSubmit, errors, setPage}) => {
+export const CreatePage = ({setPage}) => {
+  const {handleSubmit} = useFormContext()
   const onSubmit = React.useCallback(() => {
     setPage(2)
   },[setPage])
@@ -27,72 +31,46 @@ export const CreatePage = ({register, handleSubmit, errors, setPage}) => {
         <div>
           <label className={style.input_label}>Nickname</label>
           <div>
-            <input
-              className={style.form_input}
+            <TextInput
               name='nickname'
-              {...register('nickname', {
-                  required: true,
-                  maxLength: 30,
-                  pattern: /^[A-Za-z0-9]+$/i
-                }
-              )}
+              pattern_value={/^[A-Za-z0-9]+$/i}
+              pattern_message='Неправильный формат'
+              required_message='Введите допустимый никнейм'
+              maxLength={30}
               placeholder='Placeholder'
-              type="text"
             />
-            {errors.nickname && (<p className={style.errors}>Введите допустимый никнейм</p>)}
           </div>
         </div>
         <div className={style.input_block}>
           <label className={style.input_label}>Name</label>
           <div>
-            <input
-              className={style.form_input}
+            <TextInput
               name='name'
-              {...register('name',
-                {
-                  required: true,
-                  maxLength: 50,
-                  pattern: /^[A-Za-zА-Яа-я]+$/i
-                })}
+              maxLength={50}
+              pattern_message='Неправильный формат'
+              required_message='Это поле обязательное'
+              pattern_value={/^[A-Za-zА-Яа-я]+$/i}
               placeholder='Placeholder'
-              type="text"
             />
-            {errors.name && (<p className={style.errors}>Введите допустимое имя</p>)}
           </div>
         </div>
         <div className={style.input_block}>
           <label className={style.input_label}>Surname</label>
           <div>
-            <input
-              className={style.form_input}
+            <TextInput
               name='surname'
-              {...register('surname',
-                {
-                  required: true,
-                  maxLength: 50,
-                  pattern: /^[A-Za-zА-Яа-я]+$/i
-                })}
+              maxLength={50}
+              pattern_message='Неправильный формат'
+              required_message='Это поле обязательное'
+              pattern_value={/^[A-Za-zА-Яа-я]+$/i}
               placeholder='Placeholder'
-              type="text"
             />
-            {errors.surname && (<p className={style.errors}>Введите допустимую фамилию</p>)}
           </div>
         </div>
         <div className={style.input_block}>
           <label className={style.input_label}>Sex</label>
           <div>
-            <select
-              name='sex'
-              {...register('sex',
-                {
-                  required: true
-                })}
-              className={style.form_input}>
-              <option className={style.select_option} value='' hidden>Не выбрано</option>
-              <option className={style.select_option} value="man">man</option>
-              <option className={style.select_option} value="woman">woman</option>
-            </select>
-            {errors.sex && <p className={style.errors}>Выберите пол</p>}
+            <SelectInput name='sex' required_message='Выберите пол'/>
           </div>
         </div>
         <div className={style.button_footer}>
