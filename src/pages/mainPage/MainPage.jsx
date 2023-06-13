@@ -38,19 +38,21 @@ export const MainPage = () => {
       <header className={style.header}>
         <img src="/assets/Avatar.svg" alt="avatar"/>
         <div>
-          <h3 className={style.name}>Иван Иванов</h3>
+          <h3 className={style.name}>Кирилл Лядов</h3>
           <div className={style.links}>
             <div className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <span className={style.link_style}>Telegram</span>
+              <a href='https://t.me/Kirill2367' className={style.link_style}>Telegram</a>
             </div>
             <div className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <span className={style.link_style}>GitHub</span>
+              <a href='https://github.com/Cisaray' className={style.link_style}>GitHub</a>
             </div>
             <div className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <span className={style.link_style}>Resume</span>
+              <a
+                href='https://hh.ru/applicant/resumes/view?resume=50bcb1d4ff0bdd0f630039ed1f49306e4c6471'
+                className={style.link_style}>Resume</a>
             </div>
           </div>
         </div>
