@@ -48,7 +48,7 @@ export const PageLayout = () => {
       setShowFail(true)
     }
 
-  }, [dispatch, setShowSuccess, setShowFail, email, phone_number, fetchData])
+  }, [methods, dispatch, setShowSuccess, setShowFail, email, phone_number, fetchData])
 
   return (
     <FormProvider {...methods}>

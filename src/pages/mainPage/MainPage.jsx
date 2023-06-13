@@ -46,7 +46,7 @@ export const MainPage = () => {
             {links.map((item, index) =>
               <div key={index} className={style.link_item}>
               <img src="/assets/Folder.svg" alt="Folder"/>
-              <a href={item.link} target='_blank' className={style.link_style}>{item.label}</a>
+              <a href={item.link} rel='noreferrer' target='_blank' className={style.link_style}>{item.label}</a>
             </div>)}
           </div>
         </div>

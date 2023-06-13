@@ -1,6 +1,6 @@
 import style from "../../pages/secondCreatePage/secondPage.module.css";
 import React from "react";
-import {useForm, useFormContext} from "react-hook-form";
+import {useFormContext} from "react-hook-form";
 
 export const CheckBoxInput = ({name}) => {
   const {register} = useFormContext()
