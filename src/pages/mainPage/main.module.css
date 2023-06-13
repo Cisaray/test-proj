@@ -39,6 +39,7 @@
 }
 
 .link_item {
+    color: #5558FA;
     display: flex;
     gap: 6px;
 }

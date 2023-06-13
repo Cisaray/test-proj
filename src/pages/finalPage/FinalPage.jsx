@@ -2,20 +2,18 @@ import React from "react";
 import style from "./finalPage.module.css";
 import {SuccessModal} from "../../components/modals/successModal/SuccessModal";
 import {FailModal} from "../../components/modals/failModal/FailModal";
+import {useFormContext} from "react-hook-form";
+import {TextArea} from "../../components/Inputs/TextArea";
 
 export const FinalPage = ({
                             setPage,
                             onSubmit,
-                            register,
-                            errors,
-                            handleSubmit,
                             setShowSuccess,
                             setShowFail,
                             showFail,
                             showSuccess
                           }) => {
-
-  const [aboutValue, setAboutValue] = React.useState('')
+  const {handleSubmit, formState: {errors}} = useFormContext()
 
   return (
     <div className={style.container}>
@@ -38,20 +36,7 @@ export const FinalPage = ({
       </div>
       <div className={style.about_block}>
         <label>About</label>
-        <textarea
-          className={style.about_area}
-          {...register('about',
-            {
-              required: 'Заполните это поле',
-              maxLength: 200
-            })}
-          onChange={(e) => setAboutValue(e.target.value)}
-          defaultValue={aboutValue}
-          name="about"
-          cols="30"
-          rows="10">
-        </textarea>
-        <span className={style.count}>{aboutValue.replaceAll(" ", '').length}</span>
+        <TextArea name='about' maxLength={200} required_message='Заполните это поле'/>
       </div>
       {errors.about && <p className={style.errors}>{errors.about.message}</p>}
       <div className={style.button_footer}>

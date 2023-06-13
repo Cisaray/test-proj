@@ -37,7 +37,7 @@ export const PageLayout = () => {
         number: data.number,
         about: data.about,
       }
-
+      console.log(resultData)
       await fetchData(resultData)
       console.log(resultData)
       setShowSuccess(true)
@@ -54,9 +54,7 @@ export const PageLayout = () => {
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         {page === 1 && <CreatePage setPage={setPage}/>}
-        {page === 2 &&
-          <SecondCreatePage setPage={setPage}
-            />}
+        {page === 2 && <SecondCreatePage setPage={setPage}/>}
         {page === 3 &&
           <FinalPage
             setPage={setPage}

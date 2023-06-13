@@ -1,16 +1,30 @@
 import style from "./secondPage.module.css";
-import {useFieldArray} from "react-hook-form";
+import {useFieldArray, useFormContext} from "react-hook-form";
 import React from "react";
+import {TextInput} from "../../components/Inputs/TextInput";
+import {CheckBoxInput} from "../../components/Inputs/CheckBoxInput";
+import {RadioInput} from "../../components/Inputs/RadioInput";
 
-export const SecondCreatePage = ({setPage, register, handleSubmit, errors, control}) => {
-
+export const SecondCreatePage = ({setPage}) => {
+  const {handleSubmit, control, formState: {errors}} = useFormContext()
   const {fields: advantagesFields, append: appendAdvantage, remove: removeAdvantage} = useFieldArray({
     control,
     name: 'advantages'
   })
-  const onSubmit = React.useCallback ((data) => {
+
+  const Radios = [
+    {value: '1', label: '1'},
+    {value: '2', label: '2'},
+    {value: '3', label: '3'}
+  ]
+  const CheckBoxes = [
+    {value: 'checkboxes[1]', label: '1'},
+    {value: 'checkboxes[2]', label: '2'},
+    {value: 'checkboxes[3]', label: '3'},
+  ]
+  const onSubmit = React.useCallback((data) => {
     setPage(3)
-  },[setPage])
+  }, [setPage])
 
   return (
     <main className={style.container}>
@@ -36,17 +50,9 @@ export const SecondCreatePage = ({setPage, register, handleSubmit, errors, contr
           <label>Advantages</label>
           {advantagesFields.map((field, index) =>
             <div key={field.id} className={style.advantages_input__block}>
-              <input
-                name='advantages'
-                {...register(`advantages.${index}.value`,
-                  {
-                    required: 'Введите достижение'
-                  })}
-                className={style.form_input}
-                placeholder='Placeholder'
-                type="text"/>
+              <TextInput name={`advantages.${index}.value`} required_message='Введите достижение'
+                         placeholder='Placeholder'/>
               <img onClick={() => removeAdvantage(index)} src="/assets/Delete.svg" alt="Delete"/>
-              {errors.advantages && <p className={style.errors}>Добавьте достижение</p>}
             </div>)}
           <button type='button' onClick={() => appendAdvantage({value: ''})} className={style.add_button}><img
             src="/assets/Plus.svg"
@@ -56,70 +62,27 @@ export const SecondCreatePage = ({setPage, register, handleSubmit, errors, contr
         {/*checkboxes group*/}
         <div className={style.checkbox_group}>
           <label>Checkbox group</label>
-          <div>
-            <input
-              name='checkboxes'
-              {...register(`checkboxes[1]`)}
-              className={style.checkbox}
-              type="checkbox"/>
-            <span>1</span>
-          </div>
-          <div>
-            <input
-              className={style.checkbox}
-              name='checkboxes'
-              {...register(`checkboxes[2]`)}
-              type="checkbox"/>
-            <span>2</span>
-          </div>
-          <div>
-            <input
-              name='checkboxes'
-              {...register(`checkboxes[3]`)}
-              className={style.checkbox}
-              type="checkbox"/>
-            <span>3</span>
-          </div>
+          {CheckBoxes.map((item, index) =>
+            <div key={index}>
+              <CheckBoxInput name={item.value}/>
+              <span>{item.label}</span>
+            </div>
+          )}
         </div>
         {errors.checkboxes && <p className={style.errors}>{errors.checkboxes.message}</p>}
         {/*radio group*/}
         <div className={style.radio_group}>
           <label>Radio group</label>
-          <div>
-            <input
-              name='number'
-              {...register('number', {required:true})}
-              value='1'
-              className={style.checkbox}
-              type="radio"
-            />
-            <span>1</span>
-          </div>
-          <div>
-            <input
-              name='number'
-              {...register('number',{required: true})}
-              value='2'
-              className={style.checkbox}
-              type="radio"
-            />
-            <span>2</span>
-          </div>
-          <div>
-            <input
-              name='number'
-              {...register('number', {required:true})}
-              value='3'
-              className={style.checkbox}
-              type="radio"
-            />
-            <span>3</span>
-          </div>
+          {Radios.map((item, index) =>
+            <div>
+              <RadioInput name='number' value={item.value}/>
+              <span>{item.label}</span>
+            </div>)}
           {errors.number && <p className={style.errors}>Выберите</p>}
         </div>
 
         <div className={style.button_footer}>
-          <button onClick={()=>setPage(1)} className={style.previous_button}>Назад</button>
+          <button onClick={() => setPage(1)} className={style.previous_button}>Назад</button>
           <button onClick={handleSubmit(onSubmit)} className={style.next_button}>Далее</button>
         </div>
       </div>
