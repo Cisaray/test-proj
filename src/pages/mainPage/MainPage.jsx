@@ -29,12 +29,12 @@ export const MainPage = () => {
     {link: 'https://hh.ru/applicant/resumes/view?resume=50bcb1d4ff0bdd0f630039ed1f49306e4c6471', label:'Resume'}
   ]
 
-  const onSubmit = React.useCallback((data, e) => {
+  const onSubmit = (data, e) => {
     e.preventDefault()
     dispatch(setEmail(data.email))
     dispatch(setPhoneNumber(data.phone_number))
     navigate('/create')
-  }, [dispatch, navigate])
+  }
 
   return (
     <div className={style.container}>

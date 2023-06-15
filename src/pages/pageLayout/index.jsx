@@ -20,7 +20,7 @@ export const PageLayout = () => {
   })
   const [fetchData] = usePostDataMutation()
 
-  const onSubmit = React.useCallback(async (data, e) => {
+  const onSubmit = async (data, e) => {
     e.stopPropagation()
     try {
       const advantages = data.advantages.map(item => item.value)
@@ -46,7 +46,7 @@ export const PageLayout = () => {
       setShowFail(true)
     }
 
-  }, [methods, dispatch, setShowSuccess, setShowFail, email, phone_number, fetchData])
+  }
 
   return (
     <FormProvider {...methods}>

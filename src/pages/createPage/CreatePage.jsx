@@ -7,9 +7,9 @@ import {useFormContext} from "react-hook-form";
 
 export const CreatePage = ({setPage}) => {
   const {handleSubmit} = useFormContext()
-  const onSubmit = React.useCallback(() => {
+  const onSubmit = () => {
     setPage(2)
-  },[setPage])
+  }
 
   return (
     <div className={style.container}>

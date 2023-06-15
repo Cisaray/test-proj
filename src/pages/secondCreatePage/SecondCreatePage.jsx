@@ -22,9 +22,9 @@ export const SecondCreatePage = ({setPage}) => {
     {id: 'field-checkbox-group-option-2', value: 'checkboxes[2]', label: '2'},
     {id: 'field-checkbox-group-option-3', value: 'checkboxes[3]', label: '3'},
   ]
-  const onSubmit = React.useCallback((data) => {
+  const onSubmit = (data) => {
     setPage(3)
-  }, [setPage])
+  }
 
   return (
     <main className={style.container}>
