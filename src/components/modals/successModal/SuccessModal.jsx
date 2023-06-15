@@ -14,7 +14,7 @@ export const SuccessModal = ({showSuccess, setShowSuccess}) => {
           <img  src="/assets/success.svg" alt="success"/>
         </div>
         <div className={style.button_block}>
-          <Link to='/'><button className={style.back_button} >На главную</button></Link>
+          <Link to='/'><button id='button-to-main' className={style.back_button} >На главную</button></Link>
         </div>
       </div>
     </div>, portal

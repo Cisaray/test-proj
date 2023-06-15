@@ -37,6 +37,7 @@ export const CreatePage = ({setPage}) => {
               pattern_message='Неправильный формат'
               required_message='Введите допустимый никнейм'
               maxLength={30}
+              id='field-nickname'
               placeholder='Placeholder'
             />
           </div>
@@ -47,6 +48,7 @@ export const CreatePage = ({setPage}) => {
             <TextInput
               name='name'
               maxLength={50}
+              id='field-name'
               pattern_message='Неправильный формат'
               required_message='Это поле обязательное'
               pattern_value={/^[A-Za-zА-Яа-я]+$/i}
@@ -60,6 +62,7 @@ export const CreatePage = ({setPage}) => {
             <TextInput
               name='surname'
               maxLength={50}
+              id='field-sername'
               pattern_message='Неправильный формат'
               required_message='Это поле обязательное'
               pattern_value={/^[A-Za-zА-Яа-я]+$/i}
@@ -75,9 +78,9 @@ export const CreatePage = ({setPage}) => {
         </div>
         <div className={style.button_footer}>
           <Link to='/'>
-            <button className={style.previous_button}>Назад</button>
+            <button id='button-back' className={style.previous_button}>Назад</button>
           </Link>
-          <button onClick={handleSubmit(onSubmit)} className={style.next_button}>Далее</button>
+          <button id='button-next' onClick={handleSubmit(onSubmit)} className={style.next_button}>Далее</button>
         </div>
       </div>
     </div>

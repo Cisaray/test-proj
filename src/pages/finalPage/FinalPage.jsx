@@ -36,12 +36,12 @@ export const FinalPage = ({
       </div>
       <div className={style.about_block}>
         <label>About</label>
-        <TextArea name='about' maxLength={200} required_message='Заполните это поле'/>
+        <TextArea id='field-about' name='about' maxLength={200} required_message='Заполните это поле'/>
       </div>
       {errors.about && <p className={style.errors}>{errors.about.message}</p>}
       <div className={style.button_footer}>
-        <button onClick={() => setPage(2)} className={style.previous_button}>Назад</button>
-        <button type='submit' onClick={handleSubmit(onSubmit)} className={style.next_button}>Отправить</button>
+        <button id='button-back' onClick={() => setPage(2)} className={style.previous_button}>Назад</button>
+        <button id='button-send' type='submit' onClick={handleSubmit(onSubmit)} className={style.next_button}>Отправить</button>
       </div>
       <SuccessModal showSuccess={showSuccess} setShowSuccess={setShowSuccess}/>
       <FailModal showFail={showFail} setShowFail={setShowFail}/>

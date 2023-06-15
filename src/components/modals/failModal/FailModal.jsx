@@ -15,7 +15,7 @@ export const FailModal = ({showFail, setShowFail}) => {
           <img  src="/assets/fail.svg" alt="fail"/>
         </div>
         <div className={style.button_block_fail}>
-          <button onClick={() => setShowFail(false)} className={style.back_button} >Закрыть</button>
+          <button id='button-close' onClick={() => setShowFail(false)} className={style.back_button} >Закрыть</button>
         </div>
       </div>
     </div>, portal

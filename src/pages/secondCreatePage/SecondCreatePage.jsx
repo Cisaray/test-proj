@@ -13,14 +13,14 @@ export const SecondCreatePage = ({setPage}) => {
   })
 
   const Radios = [
-    {value: '1', label: '1'},
-    {value: '2', label: '2'},
-    {value: '3', label: '3'}
+    {id: 'field-radio-group-option-1', value: '1', label: '1'},
+    {id: 'field-radio-group-option-2', value: '2', label: '2'},
+    {id: 'field-radio-group-option-3', value: '3', label: '3'}
   ]
   const CheckBoxes = [
-    {value: 'checkboxes[1]', label: '1'},
-    {value: 'checkboxes[2]', label: '2'},
-    {value: 'checkboxes[3]', label: '3'},
+    {id: 'field-checkbox-group-option-1', value: 'checkboxes[1]', label: '1'},
+    {id: 'field-checkbox-group-option-2', value: 'checkboxes[2]', label: '2'},
+    {id: 'field-checkbox-group-option-3', value: 'checkboxes[3]', label: '3'},
   ]
   const onSubmit = React.useCallback((data) => {
     setPage(3)
@@ -50,11 +50,12 @@ export const SecondCreatePage = ({setPage}) => {
           <label>Advantages</label>
           {advantagesFields.map((field, index) =>
             <div key={field.id} className={style.advantages_input__block}>
-              <TextInput name={`advantages.${index}.value`} required_message='Введите достижение'
+              <TextInput id={`field-advantage-${index+1}`} name={`advantages.${index}.value`} required_message='Введите достижение'
                          placeholder='Placeholder'/>
-              <img onClick={() => removeAdvantage(index)} src="/assets/Delete.svg" alt="Delete"/>
+              <img onClick={() => removeAdvantage(index)} id={`button-remove-${index+1}`} src="/assets/Delete.svg" alt="Delete"/>
             </div>)}
-          <button type='button' onClick={() => appendAdvantage({value: ''})} className={style.add_button}><img
+          <button type='button' id='button add' onClick={() => appendAdvantage({value: ''})} className={style.add_button}>
+            <img
             src="/assets/Plus.svg"
             alt="Plus"/>
           </button>
@@ -64,7 +65,7 @@ export const SecondCreatePage = ({setPage}) => {
           <label>Checkbox group</label>
           {CheckBoxes.map((item, index) =>
             <div key={index}>
-              <CheckBoxInput name={item.value}/>
+              <CheckBoxInput id={item.id} name={item.value}/>
               <span>{item.label}</span>
             </div>
           )}
@@ -74,16 +75,16 @@ export const SecondCreatePage = ({setPage}) => {
         <div className={style.radio_group}>
           <label>Radio group</label>
           {Radios.map((item, index) =>
-            <div>
-              <RadioInput name='number' value={item.value}/>
+            <div key={index}>
+              <RadioInput id={item.id} name='number' value={item.value}/>
               <span>{item.label}</span>
             </div>)}
           {errors.number && <p className={style.errors}>Выберите</p>}
         </div>
 
         <div className={style.button_footer}>
-          <button onClick={() => setPage(1)} className={style.previous_button}>Назад</button>
-          <button onClick={handleSubmit(onSubmit)} className={style.next_button}>Далее</button>
+          <button id='button-back' onClick={() => setPage(1)} className={style.previous_button}>Назад</button>
+          <button id='button-next' onClick={handleSubmit(onSubmit)} className={style.next_button}>Далее</button>
         </div>
       </div>
     </main>

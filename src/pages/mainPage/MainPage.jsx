@@ -72,7 +72,7 @@ export const MainPage = () => {
               />
             </div>
           </div>
-          <button type='submit' className={style.form_button}>Начать</button>
+          <button id='button-start' type='submit' className={style.form_button}>Начать</button>
         </form>
       </FormProvider>
     </div>
