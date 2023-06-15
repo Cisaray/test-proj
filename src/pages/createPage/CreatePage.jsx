@@ -73,7 +73,7 @@ export const CreatePage = ({setPage}) => {
         <div className={style.input_block}>
           <label className={style.input_label}>Sex</label>
           <div>
-            <SelectInput name='sex' required_message='Выберите пол'/>
+            <SelectInput id='field-sex' name='sex' required_message='Выберите пол'/>
           </div>
         </div>
         <div className={style.button_footer}>

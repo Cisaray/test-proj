@@ -2,12 +2,12 @@ import style from "../../pages/createPage/createPage.module.css";
 import React from "react";
 import {useFormContext} from "react-hook-form";
 
-export const SelectInput = ({name, required_message}) => {
+export const SelectInput = ({name, required_message, id}) => {
   const {register, formState: {errors}} = useFormContext()
   return (
     <>
       <select
-        id='field-sex'
+        id={id}
         {...register(name,
           {
             required: `${required_message}`
